@@ -1,11 +1,17 @@
 galaxyproject.miniconda
 =======================
 
-An [Ansible][ansible] role for installing and managing [Miniconda][miniconda] installation. Additionally, the role can
+An [Ansible][ansible] role for installing and managing [Conda][conda] using [Miniforge][miniforge], [micromamba][micromamba], [Miniconda][miniconda] or [Anaconda][anaconda]. Additionally, the role can
 manage the creation of a [Conda][conda] environment that can be used to create a [venv][venv] for [Galaxy][galaxy].
 
+> [!WARNING]
+> Use of Miniconda and Anaconda by those at organizations with more than 200 employees or contractors (including Affiliates) requires a [paid Anaconda Business license](https://www.anaconda.com/pricing).
+
 [ansible]: https://www.ansible.com/
-[miniconda]: https://docs.conda.io/en/latest/miniconda.html
+[miniforge]: https://github.com/conda-forge/miniforge
+[micromamba]: https://github.com/mamba-org/micromamba-releases
+[miniconda]: https://www.anaconda.com/docs/getting-started/miniconda/
+[anaconda]: https://www.anaconda.com/docs/getting-started/anaconda/
 [conda]: https://docs.conda.io/en/latest/
 [venv]: https://docs.python.org/3/tutorial/venv.html
 [galaxy]: https://galaxyproject.org/
@@ -22,10 +28,10 @@ See [defaults/main.yml](defaults/main.yml) for a full list.
 
 The only required variable is `miniconda_prefix`, the root of the Conda installation.
 
-The following two variables can be used to select the Conda installer and executable
+The following two variables can be used to select the Conda installer and executable:
 
-- `miniconda_distribution`: the values can be `miniforge` (default), `miniconda`, `micromamba` or `anaconda`
-- `miniconda_executable`: the default values depend on the value of `miniconda_distribution`
+- `miniconda_distribution`: the values can be `miniforge` (default), `micromamba`, `miniconda` or `anaconda`
+- `miniconda_executable`: the default value depend on the value of `miniconda_distribution`
   - `mamba`: when the distribution is _miniforge_
   - `micromamba`: when the distribution is _micromamba_
   - `conda`: when the distribution is _miniconda_ or _anaconda_
