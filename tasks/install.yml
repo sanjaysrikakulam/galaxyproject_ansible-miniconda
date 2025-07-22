@@ -24,6 +24,10 @@
       register: __conda_install
       changed_when: __conda_install.rc != 0
 
+    - name: Accept Terms of Service for all channels
+      ansible.builtin.command: >
+        {{ miniconda_prefix }}/bin/{{ miniconda_executable }} tos accept
+
   always:
     - name: Remove installer file
       ansible.builtin.file:
