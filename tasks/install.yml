@@ -27,6 +27,7 @@
     - name: Accept Terms of Service for all channels
       ansible.builtin.command: >
         {{ miniconda_prefix }}/bin/{{ miniconda_executable }} tos accept
+      changed_when: false
 
   always:
     - name: Remove installer file
